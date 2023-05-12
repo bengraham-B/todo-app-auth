@@ -1,0 +1,59 @@
+#Navbar {
+    width: 100%;
+    height: 100px;
+    background: rgb(0, 30, 255);
+
+    button {
+        width: 90px;
+        height: 45px;
+        margin: 10px;
+        background: none;
+        border: 1px solid white;
+        color: white;
+
+        &:hover {
+            background: white;
+            color: blue;
+        }
+    }
+
+    .nav-container {
+        height: inherit;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-around;
+
+        h1 {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .logout-button{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                color: white;
+                align-items: center;
+
+            }
+    
+            .login-signup-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                color: white;
+
+
+
+    
+            }
+        }
+
+    }
+}
