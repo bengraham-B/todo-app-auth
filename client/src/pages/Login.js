@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 //~ REDUX
-import { useDispatch,  useSelector} from 'react-redux'
-import { addNewTodoRedux, loginRedux } from '../store/todoRedux'
+import { useDispatch } from 'react-redux'
+import { loginRedux } from '../store/todoRedux'
 
 export default function Login() {
     const [email, setEmail] = useState()

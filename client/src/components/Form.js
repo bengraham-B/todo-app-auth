@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { addNewTodoRedux } from '../store/todoRedux'
-import { useDispatch,  useSelector} from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 
 export default function Form() {

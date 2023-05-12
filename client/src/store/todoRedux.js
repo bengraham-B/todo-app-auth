@@ -43,11 +43,17 @@ export const todoSlice = createSlice({
 
             })
 
+            //^ If repsosne is ok, it will let the user proceed
             const data = await response.json()
-            localStorage.setItem('user-l3t10', JSON.stringify(data))
-            console.log(data)
-            state.userAuthStatus = true
-            window.location.assign("/")
+            if(response.ok){
+                localStorage.setItem('user-l3t10', JSON.stringify(data))
+                window.location.assign("/")
+                return {
+                    ...state,
+                    userAuthStatus: true
+                };
+            }
+
         },
         
         logOutRedux: async (state) => {
@@ -59,8 +65,6 @@ export const todoSlice = createSlice({
                 userAuthStatus: true
             };
         },
-
-        
 
         signupRedux: async(state, props) => {
             //^ Sending the payload to backend
@@ -77,10 +81,16 @@ export const todoSlice = createSlice({
             })
 
             const data = await response.json()
-            localStorage.setItem('user-l3t10', JSON.stringify(data))
-            console.log(data)
-            window.location.assign("/")
-
+            //^ If repsosne is ok, it will let the user proceed
+            if(response.ok){
+                localStorage.setItem('user-l3t10', JSON.stringify(data))
+                window.location.assign("/")
+                
+                return {
+                    ...state,
+                    userAuthStatus: true
+                };
+            }
 
         },
 

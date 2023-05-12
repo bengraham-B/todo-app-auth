@@ -2,7 +2,7 @@ import React from 'react'
 
 //~ REDUX
 import { useDispatch,  useSelector} from 'react-redux'
-import { addNewTodoRedux, loginRedux, authStatus } from '../store/todoRedux'
+import { authStatus } from '../store/todoRedux'
 
 
 //^ Importing Form

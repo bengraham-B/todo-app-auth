@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
-
 //~ REDUX
-import { useDispatch,  useSelector} from 'react-redux'
-import { addNewTodoRedux, loginRedux, signupRedux } from '../store/todoRedux'
+import { useDispatch } from 'react-redux'
+import { signupRedux } from '../store/todoRedux'
 
 
 export default function Login() {
