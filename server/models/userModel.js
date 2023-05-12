@@ -34,7 +34,7 @@ userSchema.statics.login = async function(email, password){
     //^ Matches the user inputed password to the password in the DB
     const match = await bcrypt.compare(password, user.password) 
     if(!match){
-        throw Error("Inncorect Password Dummy")
+        throw Error("Inncorect Password")
     }
 
     return user

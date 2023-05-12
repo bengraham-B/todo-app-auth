@@ -54,6 +54,7 @@ export const todoSlice = createSlice({
                 };
             }
 
+            
         },
         
         logOutRedux: async (state) => {
@@ -85,7 +86,7 @@ export const todoSlice = createSlice({
             if(response.ok){
                 localStorage.setItem('user-l3t10', JSON.stringify(data))
                 window.location.assign("/")
-                
+
                 return {
                     ...state,
                     userAuthStatus: true

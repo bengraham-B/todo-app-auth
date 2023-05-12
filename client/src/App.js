@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React, { useState, useEffect} from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import './styles/styles.css'
 
@@ -12,6 +12,17 @@ import Signup from './pages/Signup'
 import Home from './pages/Home'
 
 export default function App() {
+    const [user, setUser] = useState()
+
+	//^ Checks if the user is authenticated
+	useEffect(() => {
+        if(localStorage.getItem("user-l3t10")){
+            const object = JSON.parse(localStorage.getItem('user-l3t10'))
+            setUser(object.email)
+        } else {
+            setUser("")
+        }
+    },[user])
 	return (
 		<div className='App'>
 			<BrowserRouter>
@@ -19,9 +30,10 @@ export default function App() {
 
 				<div className="pages">
 					<Routes>
-						<Route path="/" element={<Home/>}/>
-						<Route path="/login" element={<Login/>}/>
-						<Route path="/signup" element={<Signup/>}/>
+						{/* The <Navigate/> will protect the routes from unauthorised users */}
+						<Route path="/" element={user ? <Home/> : <Navigate to="/login"/>} />
+						<Route path="/login" element={!user ? <Login/> : <Navigate to="/"/>} />
+						<Route path="/signup" element={!user ? <Signup/> : <Navigate to="/"/>} />
 					</Routes>
 				</div>
 			

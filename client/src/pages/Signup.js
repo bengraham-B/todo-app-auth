@@ -11,6 +11,9 @@ export default function Login() {
 
     const dispatch = useDispatch()
 
+   
+
+
     const handleSignup = () => {
         dispatch(signupRedux({email:email, password:password}))
 
@@ -39,7 +42,11 @@ export default function Login() {
                 </div>
 
                 <div className="button-container">
-                    <button onClick={handleSignup}>Login</button>
+                    <button onClick={handleSignup}>Sign Up</button>
+                </div>
+
+                <div className="error-container">
+                   
                 </div>
 
             </div>
