@@ -9,6 +9,7 @@ const getTodo = (req, res) => {
 
 const createTodo = (req, res) => {
     const {_id, details, completed} = req.body
+    console.log(details)
     res.status(200).json({_id, details, completed})
 }
 

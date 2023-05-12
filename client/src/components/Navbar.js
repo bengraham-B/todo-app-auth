@@ -1,12 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useDispatch,  useSelector} from 'react-redux'
+import { logOutRedux, authStatus } from '../store/todoRedux'
+
 
 export default function Navbar() {
+    const dispatch = useDispatch()
+   
 
-    //^ Importin user from Auth Context
-    const { user } = useAuthContext()
-
+    const logout = () =>{
+        dispatch(logOutRedux())
+        dispatch(authStatus())
+    }
+    dispatch(authStatus()) //^ Checks auth status and sets it accordingly.
+    const user = useSelector((state) => state.todo.userAuthStatus)
 
     return (
         <div id="Navbar">
@@ -17,7 +24,7 @@ export default function Navbar() {
                 <nav>
                 {user && (<div className='logout-button'>
                         <span>Ben@gmail.com</span>
-                        <button>Log Out</button>
+                        <button onClick={logout}>Log Out</button>
                     </div>)}
 
                 {!user && (<div className='login-signup-container'>

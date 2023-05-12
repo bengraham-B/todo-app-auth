@@ -1,7 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+//~ REDUX
+import { useDispatch,  useSelector} from 'react-redux'
+import { addNewTodoRedux, loginRedux } from '../store/todoRedux'
 
 export default function Login() {
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+
+    const dispatch = useDispatch()
+
+    const handleLogin = () => {
+        dispatch(loginRedux({email:email, password:password}))
+    }
+
     return (
-        <div>Login</div>
+        <div id="Login-Signup-form">
+
+            <div className="form-container">
+
+                <div className="title-container">
+                    <h1>Login</h1>
+                </div>
+
+                <div className="input-container">
+                    <div className="email-wrapper">
+                        <h2>Email</h2>
+                        <h2>Test123@gmail.com</h2>
+                        <input type="text" onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+                    <div className="password-wrapper">
+                        <h2>Password</h2>
+                        <h2>123GooseW@</h2>
+                        <input type="text" onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
+                </div>
+
+                <div className="button-container">
+                    <button onClick={handleLogin}>Login</button>
+                </div>
+
+            </div>
+
+
+        </div>
     )
 }

@@ -1,7 +1,6 @@
 
 const User = require("../models/userModel")
 const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
 const { cl } = require("goosefuncs")
 
 //^ Function to create a jwt token
@@ -15,6 +14,7 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await User.login(email, password)
+        cl("USER LOGGEDIN")
 
         //^ Create JWT Token
         const token = createToken(user._id)
@@ -36,9 +36,12 @@ const signupUser = async (req, res) => {
         //^ Create JWT Token
         const token = createToken(user._id)
         res.status(200).json({email, token})
+        cl("LOGGED IN")
     }
     catch (err) {
         res.status(400).json({err: err.message})
+        cl("FAILED LOGGED IN")
+
     }
 
 }
