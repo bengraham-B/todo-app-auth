@@ -45,6 +45,7 @@ export const todoSlice = createSlice({
 
             //^ If repsosne is ok, it will let the user proceed
             const data = await response.json()
+            console.log("redux",data.token)
             if(response.ok){
                 localStorage.setItem('user-l3t10', JSON.stringify(data))
                 window.location.assign("/")

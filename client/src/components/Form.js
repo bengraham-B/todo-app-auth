@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 //~ REDUX
-import { useDispatch,  useSelector} from 'react-redux'
-import { authStatus, refreshCount } from '../store/todoRedux'
+import { useDispatch } from 'react-redux'
+import { refreshCount } from '../store/todoRedux'
 
 
 export default function Form() {
@@ -11,13 +11,18 @@ export default function Form() {
 
 	const [token, setToken] = useState()
     const [todoPost, setTodoPost] = useState()
-    
-    const addTodo = async () =>{
+
+    useEffect(() => {
         if(localStorage.getItem("user-l3t10")){
             const userJWT = JSON.parse(localStorage.getItem("user-l3t10"))
             setToken(userJWT.token)
         }
-        console.log(token)
+
+    }, [])
+    
+
+    const addTodo = async () =>{
+        console.log("Token from form component",token)
 
         const postTodo = await fetch("http://localhost:8001/api/todos", {
             method: "POST",
@@ -31,7 +36,10 @@ export default function Form() {
         const data = await postTodo.json()
         console.log(data)
 
-        dispatch(refreshCount())
+        if(postTodo.ok){
+            dispatch(refreshCount())
+        }
+
         
        
     }

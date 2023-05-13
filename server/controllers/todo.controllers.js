@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const {cl} = require('goosefuncs')
 
 //* GET ALL TODOS API
-//TODO GET ALL FRONTEND
+//* GET ALL FRONTEND
 const getTodos = async (req, res) => {
     const user_id = req.user._id
 
@@ -19,14 +19,13 @@ const getTodo = (req, res) => {
 }
 
 //* CREATE A TODO API
-//TODO CREATE A TODO FRONTEND
-
+//* CREATE A TODO FRONTEND
 const createTodo = async (req, res) => {
     const details = req.body.details
     const id = req.user._id //^ Gets the current authenticated user's id from the jwt from authorization
 
-    cl( "---------------------------- " + req.user._id)
-    cl("<><><><><><><><>", details)
+    cl(req.user._id)
+    cl(req)
     
     const todo = await Todo.create({details: details, user_id: id})
 
@@ -36,7 +35,6 @@ const createTodo = async (req, res) => {
 //* DELETE TODO
 const deleteTodo = async (req, res) => {
     const {id}= req.params
-    console.log("--- DELETE ---", id)
 
     const todo = await Todo.findByIdAndDelete({_id: id})
 
@@ -44,9 +42,16 @@ const deleteTodo = async (req, res) => {
 }
 
 //TODO UPDATE TODO
-const updateTodo = (req, res) => {
-    const id = req.body.id
-    res.status(200).json({msg: "Update Todo!"})
+const updateTodo = async (req, res) => {
+    const { id,  } = req.params
+
+    try {
+        const todo_UPDATE = await Todo.findOneAndUpdate({ _id: id }, { ...req.body });
+        res.status(200).json({ todo_UPDATE });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
 
 module.exports = { getTodos, getTodo, createTodo, updateTodo, deleteTodo }

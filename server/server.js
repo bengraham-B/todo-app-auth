@@ -16,8 +16,8 @@ app.use((req, res, next) => { //^ Shows the path, method and the time when it ra
 
 app.use(cors())
 app.use(express.json())
-app.use('/api/user', authRoutes)
 app.use('/api/todos', todoRoutes)
+app.use('/api/user', authRoutes)
 
 //* Connect to MongoDB
 mongoose.connect(process.env.URI, { dbName: process.env.DATABASE_NAME})

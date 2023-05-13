@@ -30,8 +30,10 @@ export default function Home() {
 			setTodos(data) //^ Setting the Todos from the API to state.
 			
 		}
+		
 		const userJWT = JSON.parse(localStorage.getItem("user-l3t10"))
 		setToken(userJWT.token)
+
 		console.log(" ----- ",userJWT)
 		if(localStorage.getItem("user-l3t10")){
 			const userToken = userJWT.token

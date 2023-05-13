@@ -13,7 +13,7 @@ router.get("/:id", getTodo) //~ GET a specific todo
 
 router.post("/", createTodo) //~ CREATE a todo
 
-router.patch("/:id", updateTodo) //~ UPDATE a todo
+router.put("/:id", updateTodo) //~ UPDATE a todo
 
 router.delete("/:id", deleteTodo) //~ DELETE a todo
 

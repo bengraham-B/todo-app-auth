@@ -37,6 +37,8 @@ userSchema.statics.login = async function(email, password){
         throw Error("Inncorect Password")
     }
 
+    
+
     return user
 }
 
