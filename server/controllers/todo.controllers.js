@@ -2,28 +2,45 @@ const Todo = require("../models/todoModel")
 const mongoose = require('mongoose')
 const {cl} = require('goosefuncs')
 
-//TODO GET ALL TODOS
-const getTodos = (req, res) => {
-    res.status(200).json({msg:"All Todos!"})
+//* GET ALL TODOS API
+//TODO GET ALL FRONTEND
+const getTodos = async (req, res) => {
+    const user_id = req.user._id
+
+    const todos = await Todo.find({user_id}).sort({createdAt: -1})
+    res.status(200).json(todos)
 }
 
-//TODO GET A TODO
+//TODO GET A TODO API
+//TODO GET A TODO FRONTEND
 const getTodo = (req, res) => {
     const {_id}= req.params
     res.status(200).json({msg: _id})
 }
 
-//TODO CREATE A TODO
-const createTodo = (req, res) => {
-    const {_id, details, completed} = req.body
-    console.log(details)
-    res.status(200).json({_id, details, completed})
+//* CREATE A TODO API
+//TODO CREATE A TODO FRONTEND
+
+const createTodo = async (req, res) => {
+    const details = req.body.details
+    const id = req.user._id //^ Gets the current authenticated user's id from the jwt from authorization
+
+    cl( "---------------------------- " + req.user._id)
+    cl("<><><><><><><><>", details)
+    
+    const todo = await Todo.create({details: details, user_id: id})
+
+    res.status(200).json(todo)
 }
 
-//TODO DELETE TODO
-const deleteTodo = (req, res) => {
+//* DELETE TODO
+const deleteTodo = async (req, res) => {
     const {id}= req.params
-    res.status(200).json({msg: id})
+    console.log("--- DELETE ---", id)
+
+    const todo = await Todo.findByIdAndDelete({_id: id})
+
+    res.status(200).json({ todo })
 }
 
 //TODO UPDATE TODO

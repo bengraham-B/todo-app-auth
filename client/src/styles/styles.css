@@ -87,6 +87,47 @@
   color: white;
 }
 
+#Tode-Element {
+  width: 900px;
+  height: 100px;
+  box-shadow: 1px 1px 2px 1px grey;
+  margin: 10px;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 70% 30%;
+}
+#Tode-Element .left-container .title-wrapper {
+  color: blue;
+}
+#Tode-Element .right-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}
+#Tode-Element .right-container button {
+  width: 110px;
+  height: 55px;
+  font-size: 15px;
+  border: 1px solid blue;
+  background: none;
+}
+#Tode-Element .right-container button:hover {
+  background: blue;
+  color: white;
+}
+
+#Home {
+  width: 100%;
+  min-height: 100px;
+  max-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 #Login-Signup-form {
   width: 100%;
   min-height: 725px;

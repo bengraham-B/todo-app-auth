@@ -95,23 +95,18 @@ export const todoSlice = createSlice({
 
         },
 
-        addNewTodoRedux: async (state, newTodo) => {
-            console.log("REDUX", newTodo.payload)
+        
 
-            const todo = await fetch("http://localhost:8001/api/todos", {
-                method: "POST",
-                body: JSON.stringify({details: newTodo.payload}), //^ Sending the payload to backend
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+        refreshCount: (state) => {
+            return {
+                ...state,
+                refreshCount: state.refreshCount + 1
 
-            const data = await todo.json()
-            console.log(data, "Todo added")
-            
+            }
+
         }
     }
 })
 
-export const {addNewTodoRedux, loginRedux, signupRedux, logOutRedux, authStatus} = todoSlice.actions
+export const {addNewTodoRedux, loginRedux, signupRedux, logOutRedux, authStatus, getAllTodos, refreshCount} = todoSlice.actions
 export default todoSlice.reducer
