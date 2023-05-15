@@ -58,8 +58,8 @@ export default function TodeElement(props) {
         <div id="Tode-Element">
 
             <div className="left-container">
-                <div className="title-wrapper">
-                   {edit ? <input type="text" onChange={(e) => setEditValue(e.target.value)}/>: <h1>{props.details}</h1>}
+                <div className="details-wrapper">
+                   {edit ? <input type="text" placeholder={props.details} className="edit-input" onChange={(e) => setEditValue(e.target.value)}/>: <h1>{props.details}</h1>}
                 </div>
                 <div className="created-at-wrapper">
                     <h5>{props.createdAt}</h5>
@@ -69,11 +69,12 @@ export default function TodeElement(props) {
             <div className="right-container">
 
                 <div className="complete-button-wrapper">
+                    {/* If edit is true it show the save button and if false the complete button, which will delete the todo */}
                     {edit ? <button onClick={() => saveEdit(props.id, props.token)}>Save</button> : <button onClick={() => handleDelete(props.id, props.token)}>Complete</button>}
                 </div>
             
                 <div className="edit-button-wrapper">
-                    
+                    {/* If edit is true it show the cancel button and if false the edit button, which will change the details text to an inpu and allow the user to edit the todo */}
                     {edit ? <button onClick={() => setEdit(false)}>Cancel</button> : <button onClick={() => setEdit(true)}>Edit</button>}
 
                 </div>

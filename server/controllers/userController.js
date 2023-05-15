@@ -21,6 +21,7 @@ const loginUser = async (req, res) => {
         res.status(200).json({email, token})
     }
     catch(err){
+        console.log(err.message)
         res.status(400).json({err: err.message})
     }
 
@@ -31,11 +32,19 @@ const signupUser = async (req, res) => {
     const {email, password} = req.body
 
     try {
-        const user = await User.signup(email, password)
-        //^ Create JWT Token
-        const token = createToken(user._id)
-        res.status(200).json({email, token})
-        cl("LOGGED IN")
+
+        //^ if user's account does not have the substring "@gmail.com" it will respond with a HTTP 403
+        if(email.toLowerCase().includes("@gmail.com")){
+            console.log("@GMAIL")
+            const user = await User.signup(email, password)
+            //^ Create JWT Token
+            const token = createToken(user._id)
+            res.status(200).json({email, token})
+            cl("LOGGED IN")
+        }
+        else {
+            res.status(403).json("Not a @gmail.com account")
+        }
     }
     catch (err) {
         res.status(400).json({err: err.message})

@@ -13,13 +13,17 @@
 
     .left-container {
        
-        .title-wrapper {
+        .details-wrapper {
             color: blue;
+
+            //& This the input field which is displayed when the user selects to edit a todo.
+            .edit-input{ 
+                color: blue;
+                font-size: 31px;
+                padding-left: 5px;
+            }
         }
 
-        .created-at-wrapper {
-
-        }
     }
 
     .right-container {

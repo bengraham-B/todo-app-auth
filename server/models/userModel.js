@@ -1,5 +1,5 @@
 require('dotenv').config()
-const {cl, dateString} = require("goosefuncs")
+const {cl} = require("goosefuncs")
 const mongoose = require("mongoose")
 const validator = require("validator")
 const bcrypt = require('bcrypt')
@@ -36,8 +36,6 @@ userSchema.statics.login = async function(email, password){
     if(!match){
         throw Error("Inncorect Password")
     }
-
-    
 
     return user
 }

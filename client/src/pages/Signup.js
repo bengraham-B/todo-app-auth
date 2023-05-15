@@ -1,21 +1,46 @@
 import React, { useState } from 'react'
 
-//~ REDUX
-import { useDispatch } from 'react-redux'
-import { signupRedux } from '../store/todoRedux'
-
 
 export default function Login() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [error, setError] = useState()
 
-    const dispatch = useDispatch()
+
 
    
 
 
-    const handleSignup = () => {
-        dispatch(signupRedux({email:email, password:password}))
+    const handleSignup = async () => {
+        try {
+            //^ Sending the payload to backend
+            const response = await fetch("http://localhost:8002/api/user/signup", {
+            method: "POST",
+            body: JSON.stringify({
+                    email: email,
+                    password: password
+                }), 
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const data = await response.json()
+
+        //^ If repsosne is ok, it will let the user proceed
+        if(data.err){
+            setError(data.err)
+        }
+
+        else {
+            localStorage.setItem('user-l3t10', JSON.stringify(data))
+            window.location.assign("/") //^ When the user logs in they will be sent to the home page.
+        }
+       
+        //^ If the fetch request fails it will throw this error
+        } catch(error){
+            setError("Cannot connect to Server")
+        }
 
     }
 
@@ -31,12 +56,10 @@ export default function Login() {
                 <div className="input-container">
                     <div className="email-wrapper">
                         <h2>Email</h2>
-                        <h2>Test123@gmail.com</h2>
                         <input type="text" onChange={(e) => setEmail(e.target.value)}/>
                     </div>
                     <div className="password-wrapper">
                         <h2>Password</h2>
-                        <h2>123GooseW@</h2>
                         <input type="text" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                 </div>
@@ -46,12 +69,11 @@ export default function Login() {
                 </div>
 
                 <div className="error-container">
-                   
+                    <div>
+                        {error}
+                    </div>
                 </div>
-
             </div>
-
-
         </div>
     )
 }

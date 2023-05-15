@@ -20,7 +20,7 @@ export default function App() {
             const object = JSON.parse(localStorage.getItem('user-l3t10'))
             setUser(object.email)
         } else {
-            setUser("")
+            setUser("") //^ Removes email when the user logs out.
         }
     },[user])
 	return (

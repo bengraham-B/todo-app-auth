@@ -22,7 +22,6 @@ export default function Form() {
     
 
     const addTodo = async () =>{
-        console.log("Token from form component",token)
 
         const postTodo = await fetch("http://localhost:8001/api/todos", {
             method: "POST",
@@ -38,6 +37,7 @@ export default function Form() {
 
         if(postTodo.ok){
             dispatch(refreshCount())
+            setTodoPost("") //^ Clears the input after a user makes a successful post request.
         }
 
         
@@ -47,7 +47,7 @@ export default function Form() {
     return (
         <div id="Form">
             <div className="input-container">
-                <input type="text" onChange={(e) => setTodoPost(e.target.value)}/>
+                <input type="text" value={todoPost} onChange={(e) => setTodoPost(e.target.value)}/>
             </div>
             <div className="button-container">
                 <button onClick={addTodo}>Add Todo</button>

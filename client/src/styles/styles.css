@@ -97,8 +97,13 @@
   grid-template-rows: 100%;
   grid-template-columns: 70% 30%;
 }
-#Tode-Element .left-container .title-wrapper {
+#Tode-Element .left-container .details-wrapper {
   color: blue;
+}
+#Tode-Element .left-container .details-wrapper .edit-input {
+  color: blue;
+  font-size: 31px;
+  padding-left: 5px;
 }
 #Tode-Element .right-container {
   display: flex;

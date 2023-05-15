@@ -41,7 +41,7 @@ export default function Home() {
 			fetchTodos(userToken)
 		}
 	
-	}, [refreshCountRedux])
+	}, [])
 	const dispatch = useDispatch()
 	dispatch(authStatus())
 
