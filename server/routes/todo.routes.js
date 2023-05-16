@@ -1,6 +1,6 @@
 const express = require("express")
 
-const {getTodos, getTodo, createTodo, updateTodo, deleteTodo } = require('../controllers/todo.controllers.js')
+const {getTodos, getTodo, createTodo, updateTodo, deleteTodo } = require('../controllers/todoControllers')
 const requireAuth = require("../middleware/requireAuth.js")
 const rejectJson = require("../middleware/rejectJson.js");
 

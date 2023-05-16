@@ -26,7 +26,6 @@ userSchema.statics.login = async function(email, password){
    
     //^ Checks if the user is registered
     const user = await this.findOne({ email })
-    console.log("Found Email")
     if(!user){
         throw Error("Email is not registered")
     }

@@ -3,10 +3,13 @@ import React, { useState } from 'react'
 export default function Login() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const [error, setError] = useState()
+    const [error, setError] = useState(null)
+
 
     
     const handleLogin = async () => {
+        setError(null)
+
 
         try {
             const response = await fetch("http://localhost:8002/api/user/login", {
@@ -58,7 +61,7 @@ export default function Login() {
                     </div>
                     <div className="password-wrapper">
                         <h2>Password</h2>
-                        <input type="text" onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                 </div>
 
@@ -66,9 +69,11 @@ export default function Login() {
                     <button onClick={handleLogin}>Login</button>
                 </div>
 
-                <div>
-                    {error}
-                </div>
+               {error && <div className="error-container">
+                    <div>
+                         <h4>{error}</h4>
+                    </div>
+                </div>}
 
             </div>
         </div>

@@ -12,6 +12,8 @@ export default function Login() {
 
 
     const handleSignup = async () => {
+        setError(null)
+
         try {
             //^ Sending the payload to backend
             const response = await fetch("http://localhost:8002/api/user/signup", {
@@ -26,12 +28,14 @@ export default function Login() {
         })
 
         const data = await response.json()
+        console.log(data)
 
         //^ If repsosne is ok, it will let the user proceed
         if(data.err){
             setError(data.err)
         }
 
+        //^ If no error is provided in the response it will allow the user to procced
         else {
             localStorage.setItem('user-l3t10', JSON.stringify(data))
             window.location.assign("/") //^ When the user logs in they will be sent to the home page.
@@ -60,7 +64,7 @@ export default function Login() {
                     </div>
                     <div className="password-wrapper">
                         <h2>Password</h2>
-                        <input type="text" onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                 </div>
 
@@ -68,11 +72,11 @@ export default function Login() {
                     <button onClick={handleSignup}>Sign Up</button>
                 </div>
 
-                <div className="error-container">
+                {error && <div className="error-container">
                     <div>
-                        {error}
+                         <h4>{error}</h4>
                     </div>
-                </div>
+                </div>}
             </div>
         </div>
     )

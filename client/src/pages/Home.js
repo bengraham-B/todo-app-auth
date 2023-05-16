@@ -21,8 +21,12 @@ export default function Home() {
 	useEffect(() => {
 		async function fetchTodos(token){
 
-			const todo = await fetch("http://localhost:8001/api/todos", {
-				headers: {'Authorization': `Bearer ${token}`}
+			const todo = await fetch("http://localhost:8002/api/todos", {
+				method: "GET",
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`
+				}
 			})
 		
 			const data = await todo.json()
@@ -38,10 +42,10 @@ export default function Home() {
 		if(localStorage.getItem("user-l3t10")){
 			const userToken = userJWT.token
 
-			fetchTodos(userToken)
+			fetchTodos(userToken) //^ Function which will fetch the todos
 		}
 	
-	}, [])
+	}, [refreshCountRedux])
 	const dispatch = useDispatch()
 	dispatch(authStatus())
 

@@ -13,10 +13,13 @@ export default function TodeElement(props) {
     const dispatch = useDispatch()
 
     const handleDelete = async (id, token) => {
-        const todo = await fetch(`http://localhost:8001/api/todos/${id}`, {
+        const todo = await fetch(`http://localhost:8002/api/todos/${id}`, {
             method:"DELETE",
             
-			headers: {'Authorization': `Bearer ${token}`}
+			headers: {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`
+            }
 		})
 
         const data = await todo.json()
@@ -32,7 +35,7 @@ export default function TodeElement(props) {
     const saveEdit = async (id_edit, token) => {
         console.log("id_edit", id_edit)
        
-        const todoEdit = await fetch(`http://localhost:8001/api/todos/${id_edit}`, {
+        const todoEdit = await fetch(`http://localhost:8002/api/todos/${id_edit}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`,

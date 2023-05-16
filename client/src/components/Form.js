@@ -23,7 +23,7 @@ export default function Form() {
 
     const addTodo = async () =>{
 
-        const postTodo = await fetch("http://localhost:8001/api/todos", {
+        const postTodo = await fetch("http://localhost:8002/api/todos", {
             method: "POST",
             body: JSON.stringify({details: todoPost}),
             headers: {
