@@ -1,0 +1,12 @@
+git remote add origin https://github.com/bengraham-B/todo-app-auth.git
+git branch -M main
+git push -u origin main
+
+git remote add origin https://github.com/bengraham-B/todo-app-auth.git
+git branch -M REDUX
+git push -u origin REDUX
+
+    git add .
+    git commit -m "Finished auth"
+    git push -u origin REDUX
+

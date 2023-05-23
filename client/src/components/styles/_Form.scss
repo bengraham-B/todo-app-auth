@@ -1,0 +1,41 @@
+#Form {
+    width: 100%;
+    height: 100px;
+
+    @include flex();
+    align-items: center;
+    flex-direction: row;
+
+    .input-container {
+        width: 500px;
+        margin: 20px;
+
+
+        input {
+            width: 100%;
+            height: 45px;
+            padding-left: 5px;
+            font-size: 21px;
+        }
+    }
+
+    .button-container {
+        margin: 20px;
+        width: auto;
+
+        button {
+            width: 120px;
+            height: 45px;
+            background: none;
+            border : blue 2px solid;
+            font-size: 21px;
+
+            &:hover {
+                background: blue;
+                color: white;
+
+            }
+        }
+    }
+
+}

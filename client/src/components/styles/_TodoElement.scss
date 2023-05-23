@@ -1,0 +1,50 @@
+#Tode-Element {
+    width: 900px;
+    height: 100px;
+
+    box-shadow: 1px 1px 2px 1px grey;
+    margin: 10px;
+    padding: 20px;
+
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 70% 30%;
+
+
+    .left-container {
+       
+        .details-wrapper {
+            color: blue;
+
+            //& This the input field which is displayed when the user selects to edit a todo.
+            .edit-input{ 
+                color: blue;
+                font-size: 31px;
+                padding-left: 5px;
+            }
+        }
+
+    }
+
+    .right-container {
+        @include flex();
+        justify-content: space-around;
+
+        //& Shared class in the "right-container" class.
+        button {
+            width: 110px;
+            height: 55px;
+            font-size: 15px;
+
+            border: 1px solid blue;
+            background: none;
+            
+            
+            &:hover {
+                background: blue;
+                color: white;
+            }
+
+        }
+    }
+}

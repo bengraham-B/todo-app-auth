@@ -1,5 +1,5 @@
 require('dotenv').config()
-const {cl, dateString} = require("goosefuncs")
+const {cl} = require("goosefuncs")
 const mongoose = require("mongoose")
 const validator = require("validator")
 const bcrypt = require('bcrypt')
@@ -32,7 +32,6 @@ userSchema.statics.login = async function(email, password){
 
     //^ Matches the user inputed password to the password in the DB
     const match = await bcrypt.compare(password, user.password) 
-
     if(!match){
         throw Error("Inncorect Password")
     }

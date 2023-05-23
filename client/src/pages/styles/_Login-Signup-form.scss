@@ -1,0 +1,93 @@
+#Login-Signup-form {
+    width: 100%;
+    min-height: 725px;
+    max-height: auto;
+    background: rgb(0, 0, 0, 0.1);
+
+
+
+    @include flex();
+
+    .form-container {
+        padding: 20px;
+        width: 350px;
+        height: 400px;
+        box-shadow: 1px 1px 10px 1px grey;
+        border-radius: 15px;
+        @include flex();
+        flex-direction: column;
+        background: white;
+
+
+        
+
+        .title-container {
+            width: 100%;
+            @include flex();
+    
+        }
+
+        .input-container {
+            width: 100%;
+
+            input {
+                width: 300px;
+                font-size: 21px;
+                padding-left: 5px;
+                border-radius: 5px;
+                border: black 1px solid;
+
+            }
+            .email-wrapper {
+                @include flex();
+                flex-direction: column;
+                width: 100%;
+                margin: 25px 0 25px;
+            }
+
+            .password-wrapper {
+                @include flex();
+                flex-direction: column;
+                width: 100%;
+                margin: 25px 0 25px;
+            }
+        }
+
+        .button-container{
+            width: 100%;
+            height: 50px;
+            @include flex();
+
+            button {
+                width: 300px;
+                font-size: 21px;
+                background: blue;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 5px;
+                
+            }
+        }
+
+        .error-container {
+
+            width: auto;
+            height: auto;
+            background: rgba(255,0,0,0.2);
+            border: 1px red solid;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 5px;
+
+            h4 {
+                font-size: 21px;
+                color: red;
+                text-align: center;
+            }
+        }
+
+    }
+
+
+}

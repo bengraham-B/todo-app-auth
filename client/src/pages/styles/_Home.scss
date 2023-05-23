@@ -1,0 +1,11 @@
+#Home {
+    width: 100%;
+    min-height: 100px;
+    max-height: auto;
+
+    @include flex();
+    flex-direction: column;
+
+
+
+}

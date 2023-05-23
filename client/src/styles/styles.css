@@ -50,4 +50,169 @@
   flex-direction: row;
   justify-content: space-around;
   color: white;
+}
+
+#Form {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+#Form .input-container {
+  width: 500px;
+  margin: 20px;
+}
+#Form .input-container input {
+  width: 100%;
+  height: 45px;
+  padding-left: 5px;
+  font-size: 21px;
+}
+#Form .button-container {
+  margin: 20px;
+  width: auto;
+}
+#Form .button-container button {
+  width: 120px;
+  height: 45px;
+  background: none;
+  border: blue 2px solid;
+  font-size: 21px;
+}
+#Form .button-container button:hover {
+  background: blue;
+  color: white;
+}
+
+#Tode-Element {
+  width: 900px;
+  height: 100px;
+  box-shadow: 1px 1px 2px 1px grey;
+  margin: 10px;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 70% 30%;
+}
+#Tode-Element .left-container .details-wrapper {
+  color: blue;
+}
+#Tode-Element .left-container .details-wrapper .edit-input {
+  color: blue;
+  font-size: 31px;
+  padding-left: 5px;
+}
+#Tode-Element .right-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}
+#Tode-Element .right-container button {
+  width: 110px;
+  height: 55px;
+  font-size: 15px;
+  border: 1px solid blue;
+  background: none;
+}
+#Tode-Element .right-container button:hover {
+  background: blue;
+  color: white;
+}
+
+#Home {
+  width: 100%;
+  min-height: 100px;
+  max-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#Login-Signup-form {
+  width: 100%;
+  min-height: 725px;
+  max-height: auto;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#Login-Signup-form .form-container {
+  padding: 20px;
+  width: 350px;
+  height: 400px;
+  box-shadow: 1px 1px 10px 1px grey;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+}
+#Login-Signup-form .form-container .title-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#Login-Signup-form .form-container .input-container {
+  width: 100%;
+}
+#Login-Signup-form .form-container .input-container input {
+  width: 300px;
+  font-size: 21px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: black 1px solid;
+}
+#Login-Signup-form .form-container .input-container .email-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 25px 0 25px;
+}
+#Login-Signup-form .form-container .input-container .password-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 25px 0 25px;
+}
+#Login-Signup-form .form-container .button-container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#Login-Signup-form .form-container .button-container button {
+  width: 300px;
+  font-size: 21px;
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+#Login-Signup-form .form-container .error-container {
+  width: auto;
+  height: auto;
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px red solid;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 5px;
+}
+#Login-Signup-form .form-container .error-container h4 {
+  font-size: 21px;
+  color: red;
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */

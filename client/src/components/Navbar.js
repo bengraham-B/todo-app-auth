@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useDispatch,  useSelector} from 'react-redux'
+import { logOutRedux, authStatus } from '../store/todoRedux'
+
 
 export default function Navbar() {
+    const dispatch = useDispatch()
 
-    //^ Importin user from Auth Context
-    const { user } = useAuthContext()
+    const [userName, setUserName] = useState()
+   
+
+    const logout = () =>{
+        dispatch(logOutRedux())
+        dispatch(authStatus())
+    }
+    dispatch(authStatus()) //^ Checks auth status and sets it accordingly.
+    const user = useSelector((state) => state.todo.userAuthStatus)
+
+    useEffect(() => {
+        if(localStorage.getItem("user-l3t10")){
+            const object = JSON.parse(localStorage.getItem('user-l3t10'))
+            setUserName(object.email)
+        } else {
+            setUserName("")
+        }
+    },[])
 
 
     return (
@@ -16,8 +35,8 @@ export default function Navbar() {
                 </Link>
                 <nav>
                 {user && (<div className='logout-button'>
-                        <span>Ben@gmail.com</span>
-                        <button>Log Out</button>
+                        <span>{userName}</span>
+                        <button onClick={logout}>Log Out</button>
                     </div>)}
 
                 {!user && (<div className='login-signup-container'>
